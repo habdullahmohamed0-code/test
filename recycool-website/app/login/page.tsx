@@ -39,7 +39,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-cyan-100 to-teal-100 px-4 py-12">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -60,7 +60,7 @@ export default function LoginPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
-        <Card className="glass shadow-2xl border-2 border-white/50">
+        <Card className="bg-white shadow-2xl border-2 border-blue-200">
           <CardHeader className="space-y-3">
             <motion.div
               initial={{ scale: 0 }}
@@ -91,7 +91,7 @@ export default function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     disabled={isLoading}
-                    className="pl-10 h-12 glass border-2"
+                    className="pl-10 h-12 bg-white border-2 border-gray-200 focus:border-blue-400"
                   />
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     disabled={isLoading}
-                    className="pl-10 h-12 glass border-2"
+                    className="pl-10 h-12 bg-white border-2 border-gray-200 focus:border-blue-400"
                   />
                 </div>
               </div>

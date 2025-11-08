@@ -42,7 +42,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-teal-50 to-blue-50">
       {/* Hero Section */}
       <section className="py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -83,7 +83,7 @@ export default function ProductsPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <Card className="glass border-2 border-primary/30 hover:shadow-glow-green transition-all overflow-hidden">
+            <Card className="bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/3 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center p-8">
                   <div className="w-32 h-32 gradient-primary rounded-2xl flex items-center justify-center shadow-glow-green">
@@ -135,7 +135,7 @@ export default function ProductsPage() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -10 }}
                 >
-                  <Card className="h-full glass hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-primary/30 overflow-hidden group">
+                  <Card className="h-full bg-white hover:shadow-2xl transition-all border-2 border-gray-200 hover:border-green-400 overflow-hidden group">
                     <CardHeader className="p-0">
                       <div className="relative w-full h-64 bg-gradient-to-br from-primary/10 to-secondary/10 overflow-hidden">
                         {/* Product Image */}
@@ -163,7 +163,7 @@ export default function ProductsPage() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <div className="flex justify-between items-center p-4 glass rounded-xl">
+                        <div className="flex justify-between items-center p-4 bg-green-50 border border-green-200 rounded-xl">
                           <div>
                             <p className="text-sm text-gray-600 mb-1">Points Required</p>
                             <p className="text-3xl font-bold text-primary">{product.points_required}</p>
@@ -175,7 +175,7 @@ export default function ProductsPage() {
                         </div>
 
                         {product.bottles_needed && (
-                          <div className="p-4 glass rounded-xl border-2 border-secondary/20">
+                          <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
@@ -228,7 +228,7 @@ export default function ProductsPage() {
               Collect points by depositing plastic bottles in our Waste2Pay RVM,
               then exchange them for cool merchandise!
             </p>
-            <div className="glass p-8 rounded-2xl inline-block">
+            <div className="bg-white/90 border-2 border-white p-8 rounded-2xl inline-block shadow-lg">
               <p className="text-sm mb-3 opacity-90">How to earn points:</p>
               <p className="text-4xl font-bold">1 Bottle = 10 Points</p>
             </div>

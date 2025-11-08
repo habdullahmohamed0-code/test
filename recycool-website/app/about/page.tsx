@@ -41,7 +41,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -77,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-12 md:py-24">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-green-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 mb-16">
@@ -86,7 +86,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full glass border-2 border-primary/30 hover:shadow-glow-green transition-all">
+                <Card className="h-full bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mb-4">
                       <Target className="w-8 h-8 text-white" />
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full glass border-2 border-secondary/30 hover:shadow-glow-blue transition-all">
+                <Card className="h-full bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mb-4">
                       <Heart className="w-8 h-8 text-white" />
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </section>
 
       {/* Problem Background */}
-      <section className="py-12 md:py-24 bg-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -166,7 +166,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full glass border-2 border-red-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-red-300 hover:border-red-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-5xl mb-3">📊</div>
                     <CardTitle className="text-4xl font-bold text-red-600 mb-2">
@@ -194,7 +194,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.2 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full glass border-2 border-orange-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-orange-300 hover:border-orange-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-5xl mb-3">📦</div>
                     <CardTitle className="text-4xl font-bold text-orange-600 mb-2">
@@ -221,7 +221,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.3 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full glass border-2 border-yellow-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-yellow-300 hover:border-yellow-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-5xl mb-3">♻️</div>
                     <CardTitle className="text-4xl font-bold text-yellow-600 mb-2">
@@ -245,7 +245,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-12 md:py-24 bg-gray-100">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -270,7 +270,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 }}
                 whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full glass border-2 border-primary/30 hover:border-primary hover:shadow-glow-green transition-all">
+                <Card className="h-full bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <Package className="w-8 h-8 text-white" />
@@ -295,7 +295,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full glass border-2 border-secondary/30 hover:border-secondary hover:shadow-glow-blue transition-all">
+                <Card className="h-full bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <Recycle className="w-8 h-8 text-white" />
@@ -319,7 +319,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.3 }}
                 whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full glass border-2 border-accent/30 hover:border-accent hover:shadow-soft transition-all">
+                <Card className="h-full bg-white border-2 border-teal-300 hover:border-teal-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <TrendingUp className="w-8 h-8 text-white" />
@@ -341,7 +341,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Team */}
-      <section className="py-12 md:py-24 bg-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-emerald-50 to-green-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -371,7 +371,7 @@ export default function AboutPage() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -8 }}
                 >
-                  <Card className="h-full glass hover:shadow-2xl transition-all group">
+                  <Card className="h-full bg-white border-2 border-gray-200 hover:border-green-400 hover:shadow-2xl transition-all group">
                     <CardHeader>
                       <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-lg group-hover:shadow-glow-green transition-shadow">
                         <Image
@@ -405,7 +405,7 @@ export default function AboutPage() {
                   transition={{ delay: (index + 3) * 0.1 }}
                   whileHover={{ y: -8 }}
                 >
-                  <Card className="h-full glass hover:shadow-2xl transition-all group">
+                  <Card className="h-full bg-white border-2 border-gray-200 hover:border-green-400 hover:shadow-2xl transition-all group">
                     <CardHeader>
                       <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-lg group-hover:shadow-glow-blue transition-shadow">
                         <Image

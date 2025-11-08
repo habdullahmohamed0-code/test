@@ -14,7 +14,7 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm"
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -83,7 +83,7 @@ export default function Header() {
             {user ? (
               <>
                 {/* Points */}
-                <div className="flex items-center gap-2 glass px-3 md:px-4 py-2 rounded-full shadow-soft">
+                <div className="flex items-center gap-2 bg-green-50 border border-green-200 px-3 md:px-4 py-2 rounded-full shadow-sm">
                   <Coins className="w-4 md:w-5 h-4 md:h-5 text-green-600" />
                   <span className="font-bold text-gray-800 text-sm md:text-base">{user.points}</span>
                   <span className="text-xs text-gray-500 hidden sm:inline">pts</span>
@@ -91,14 +91,14 @@ export default function Header() {
 
                 {/* Avatar Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center gap-2 glass p-2.5 rounded-full hover:scale-105 transition-transform shadow-soft">
+                  <button className="flex items-center gap-2 bg-white border border-gray-200 p-2.5 rounded-full hover:scale-105 transition-transform shadow-sm">
                     <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
                       <User className="w-5 h-5 text-white" />
                     </div>
                   </button>
                   
                   {/* Dropdown */}
-                  <div className="absolute right-0 top-full mt-2 w-64 glass rounded-xl shadow-xl border border-gray-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-xl border-2 border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                     <div className="p-4 border-b border-gray-200">
                       <p className="font-semibold text-gray-800">{user.full_name}</p>
                       <p className="text-sm text-gray-500">{user.email}</p>

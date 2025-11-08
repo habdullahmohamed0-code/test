@@ -172,7 +172,7 @@ export default function RedeemPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 md:py-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 py-12 md:py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

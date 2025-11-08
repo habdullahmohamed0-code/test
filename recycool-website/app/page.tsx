@@ -55,7 +55,7 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section - Main Screen */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-50 to-teal-50">
         {/* Animated Background - Optimized */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -164,7 +164,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 }}
-                    className="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl"
+                    className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm border-2 border-green-200 p-6 rounded-2xl shadow-xl"
                   >
                     <p className="text-sm font-semibold text-gray-700 mb-2">Our Mission</p>
                     <p className="text-gray-600 text-sm">
@@ -194,7 +194,7 @@ export default function HomePage() {
       </section>
 
       {/* Problem Background Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -218,7 +218,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <Card className="h-full glass border-2 border-red-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-red-300 hover:border-red-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-4">
                       <span className="text-3xl">📊</span>
@@ -242,7 +242,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="h-full glass border-2 border-orange-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-orange-300 hover:border-orange-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4">
                       <span className="text-3xl">📦</span>
@@ -266,7 +266,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="h-full glass border-2 border-yellow-200 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-yellow-300 hover:border-yellow-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-4">
                       <span className="text-3xl">♻️</span>
@@ -289,7 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,7 +313,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <Card className="h-full glass border-2 border-green-200 hover:border-green-400 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <Package className="w-10 h-10 text-white" />
@@ -334,7 +334,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="h-full glass border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-20 h-20 gradient-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <Recycle className="w-10 h-10 text-white" />
@@ -355,7 +355,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="h-full glass border-2 border-teal-200 hover:border-teal-400 hover:shadow-xl transition-all">
+                <Card className="h-full bg-white border-2 border-teal-300 hover:border-teal-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
                       <Users className="w-10 h-10 text-white" />
@@ -375,7 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* Waste2Pay RVM Data Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -388,7 +388,7 @@ export default function HomePage() {
                 Waste2Pay Statistics
               </h2>
               <p className="text-xl text-gray-600 mb-6">Real-time data from our vending machine</p>
-              <div className="inline-flex items-center gap-2 glass px-6 py-3 rounded-full">
+              <div className="inline-flex items-center gap-2 bg-white border-2 border-gray-200 px-6 py-3 rounded-full shadow-md">
                 <div className={`w-3 h-3 rounded-full ${rvmData.isOnline ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
                 <span className="font-semibold">{rvmData.isOnline ? 'System Online' : 'System Offline'}</span>
               </div>
@@ -401,7 +401,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <Card className="text-center glass border-2 border-green-200 hover:border-green-400 hover:shadow-xl transition-all">
+                <Card className="text-center bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">🍾</div>
                     <CardTitle className="text-5xl font-bold text-green-600">
@@ -420,7 +420,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="text-center glass border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all">
+                <Card className="text-center bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">⏰</div>
                     <CardTitle className="text-5xl font-bold text-blue-600">
@@ -439,7 +439,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="text-center glass border-2 border-teal-200 hover:border-teal-400 hover:shadow-xl transition-all">
+                <Card className="text-center bg-white border-2 border-teal-300 hover:border-teal-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">👥</div>
                     <CardTitle className="text-5xl font-bold text-teal-600">
@@ -457,7 +457,7 @@ export default function HomePage() {
       </section>
 
       {/* Products Preview Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -484,7 +484,7 @@ export default function HomePage() {
                   transition={{ delay: index * 0.1 }}
                   className="hover:scale-105 transition-transform duration-300"
                 >
-                  <Card className="h-full glass hover:shadow-2xl transition-all overflow-hidden group">
+                  <Card className="h-full bg-white border-2 border-gray-200 hover:border-green-400 hover:shadow-2xl transition-all overflow-hidden group">
                     <CardHeader className="p-0">
                       <div className="relative w-full h-56 bg-gradient-to-br from-primary/20 to-secondary/20 overflow-hidden">
                         {/* Product Image */}
