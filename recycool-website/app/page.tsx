@@ -119,7 +119,7 @@ export default function HomePage() {
                     </Button>
                   </Link>
                   <Link href="/about">
-                    <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
+                    <Button size="lg" variant="outline" className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
                       Learn More
                     </Button>
                   </Link>
@@ -566,7 +566,7 @@ export default function HomePage() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-green-600">
                   Learn More
                 </Button>
               </Link>

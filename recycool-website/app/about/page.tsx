@@ -82,9 +82,10 @@ export default function AboutPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
               >
                 <Card className="h-full bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
@@ -102,9 +103,10 @@ export default function AboutPage() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Card className="h-full bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
