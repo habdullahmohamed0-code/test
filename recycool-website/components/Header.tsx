@@ -30,7 +30,7 @@ export default function Header() {
                 className="object-cover"
               />
             </div>
-            <span className="text-2xl font-bold text-gradient font-[family-name:var(--font-poppins)]">
+            <span className="text-2xl font-bold text-green-600 font-[family-name:var(--font-poppins)]">
               RecyCool
             </span>
           </Link>
@@ -39,14 +39,14 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
             >
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
             </Link>
             <Link
               href="/products"
-              className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
             >
               Products
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -54,7 +54,7 @@ export default function Header() {
             {user && (
               <Link
                 href="/redeem"
-                className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
               >
                 Redeem
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -62,7 +62,7 @@ export default function Header() {
             )}
             <Link
               href="/about"
-              className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
             >
               About Us
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -70,7 +70,7 @@ export default function Header() {
             {user?.role === 'admin' && (
               <Link
                 href="/admin"
-                className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
               >
                 Admin
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
@@ -84,7 +84,7 @@ export default function Header() {
               <>
                 {/* Points */}
                 <div className="flex items-center gap-2 glass px-3 md:px-4 py-2 rounded-full shadow-soft">
-                  <Coins className="w-4 md:w-5 h-4 md:h-5 text-primary" />
+                  <Coins className="w-4 md:w-5 h-4 md:h-5 text-green-600" />
                   <span className="font-bold text-gray-800 text-sm md:text-base">{user.points}</span>
                   <span className="text-xs text-gray-500 hidden sm:inline">pts</span>
                 </div>
@@ -102,7 +102,7 @@ export default function Header() {
                     <div className="p-4 border-b border-gray-200">
                       <p className="font-semibold text-gray-800">{user.full_name}</p>
                       <p className="text-sm text-gray-500">{user.email}</p>
-                      <p className="text-xs text-gray-400 mt-1 inline-block px-2 py-0.5 bg-primary/10 text-primary rounded-full">
+                      <p className="text-xs text-gray-600 mt-1 inline-block px-2 py-0.5 bg-green-100 text-green-700 rounded-full">
                         {user.role === 'admin' ? 'Administrator' : 'Member'}
                       </p>
                     </div>

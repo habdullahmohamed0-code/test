@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold text-gradient mb-4 font-[family-name:var(--font-poppins)]">
+            <h3 className="text-xl font-bold text-green-600 mb-4 font-[family-name:var(--font-poppins)]">
               RecyCool
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -25,22 +25,22 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-800 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-600 hover:text-primary text-sm transition-colors">
+                <Link href="/" className="text-gray-600 hover:text-green-600 text-sm transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-gray-600 hover:text-primary text-sm transition-colors">
+                <Link href="/products" className="text-gray-600 hover:text-green-600 text-sm transition-colors">
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="/redeem" className="text-gray-600 hover:text-primary text-sm transition-colors">
+                <Link href="/redeem" className="text-gray-600 hover:text-green-600 text-sm transition-colors">
                   Redeem Points
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-primary text-sm transition-colors">
+                <Link href="/about" className="text-gray-600 hover:text-green-600 text-sm transition-colors">
                   About Us
                 </Link>
               </li>
@@ -52,15 +52,15 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-800 mb-4">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <Mail className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">recycool@praditadirgantara.sch.id</span>
               </li>
               <li className="flex items-start gap-2">
-                <Phone className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">+62 812-3456-7890</span>
               </li>
               <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
                 <span className="text-gray-600 text-sm">
                   SMA Pradita Dirgantara, Jakarta, Indonesia
                 </span>

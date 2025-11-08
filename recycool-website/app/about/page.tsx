@@ -41,7 +41,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="py-16 md:py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </section>
 
       {/* Problem Background */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-red-50 to-orange-50">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -245,7 +245,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-12 md:py-24 bg-gradient-to-br from-emerald-50/30 to-cyan-50/30">
+      <section className="py-12 md:py-24 bg-gray-100">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -254,7 +254,7 @@ export default function AboutPage() {
             className="max-w-6xl mx-auto"
           >
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient font-[family-name:var(--font-poppins)]">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-[family-name:var(--font-poppins)]">
                 What We Do
               </h2>
               <p className="text-xl text-gray-600">

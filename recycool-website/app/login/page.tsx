@@ -39,7 +39,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-blue-50 to-teal-50 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-12">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -70,7 +70,7 @@ export default function LoginPage() {
             >
               <span className="text-2xl">🔐</span>
             </motion.div>
-            <CardTitle className="text-3xl font-bold text-center text-gradient font-[family-name:var(--font-poppins)]">
+            <CardTitle className="text-3xl font-bold text-center text-gray-900 font-[family-name:var(--font-poppins)]">
               Welcome Back
             </CardTitle>
             <CardDescription className="text-center text-base">
