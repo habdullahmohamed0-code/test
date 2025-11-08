@@ -103,23 +103,51 @@ body {
 /* Fix spacing and layout */
 section {
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 /* Ensure no gaps between sections */
 section + section {
-  margin-top: 0;
+  margin-top: 0 !important;
+}
+
+/* Remove default margins */
+main {
+  margin: 0;
+  padding: 0;
+}
+
+/* Container improvements */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile spacing improvements */
 @media (max-width: 768px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
   
   section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  /* Reduce hero padding on mobile */
+  section:first-child {
+    padding-top: 4rem !important;
+  }
+}
+
+/* Desktop spacing */
+@media (min-width: 769px) {
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 

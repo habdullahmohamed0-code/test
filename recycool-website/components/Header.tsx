@@ -23,18 +23,17 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-md shadow-md border-b border-green-200/50' 
-          : 'bg-transparent'
+          ? 'bg-white/90 backdrop-blur-lg shadow-xl border-b-2 border-green-300' 
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className={`container mx-auto px-4 transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'}`}>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-glow-green transition-transform group-hover:scale-110">
-              {/* RecyCool Logo - using image from public folder */}
               <Image
                 src="/recycool-logo.jpeg"
                 alt="RecyCool Logo"
@@ -43,7 +42,9 @@ export default function Header() {
                 className="object-cover"
               />
             </div>
-            <span className="text-2xl font-bold text-green-600 font-[family-name:var(--font-poppins)]">
+            <span className={`text-2xl font-bold font-[family-name:var(--font-poppins)] transition-colors duration-300 ${
+              isScrolled ? 'text-green-600' : 'text-white drop-shadow-lg'
+            }`}>
               RecyCool
             </span>
           </Link>
@@ -52,41 +53,61 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
+              className={`transition-colors font-medium relative group ${
+                isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'
+              }`}
             >
               Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full ${
+                isScrolled ? 'bg-green-600' : 'bg-white'
+              }`}></span>
             </Link>
             <Link
               href="/products"
-              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
+              className={`transition-colors font-medium relative group ${
+                isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'
+              }`}
             >
               Products
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full ${
+                isScrolled ? 'bg-green-600' : 'bg-white'
+              }`}></span>
             </Link>
             {user && (
               <Link
                 href="/redeem"
-                className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
+                className={`transition-colors font-medium relative group ${
+                  isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'
+                }`}
               >
                 Redeem
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full ${
+                  isScrolled ? 'bg-green-600' : 'bg-white'
+                }`}></span>
               </Link>
             )}
             <Link
               href="/about"
-              className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
+              className={`transition-colors font-medium relative group ${
+                isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'
+              }`}
             >
               About Us
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full ${
+                isScrolled ? 'bg-green-600' : 'bg-white'
+              }`}></span>
             </Link>
             {user?.role === 'admin' && (
               <Link
                 href="/admin"
-                className="text-gray-700 hover:text-green-600 transition-colors font-medium relative group"
+                className={`transition-colors font-medium relative group ${
+                  isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-300'
+                }`}
               >
                 Admin
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full ${
+                  isScrolled ? 'bg-green-600' : 'bg-white'
+                }`}></span>
               </Link>
             )}
           </nav>
@@ -96,15 +117,23 @@ export default function Header() {
             {user ? (
               <>
                 {/* Points */}
-                <div className="flex items-center gap-2 bg-green-50 border border-green-200 px-3 md:px-4 py-2 rounded-full shadow-sm">
-                  <Coins className="w-4 md:w-5 h-4 md:h-5 text-green-600" />
-                  <span className="font-bold text-gray-800 text-sm md:text-base">{user.points}</span>
-                  <span className="text-xs text-gray-500 hidden sm:inline">pts</span>
+                <div className={`flex items-center gap-2 px-3 md:px-4 py-2 rounded-full shadow-sm transition-all duration-300 ${
+                  isScrolled 
+                    ? 'bg-green-50 border border-green-200' 
+                    : 'bg-white/20 backdrop-blur-sm border border-white/30'
+                }`}>
+                  <Coins className={`w-4 md:w-5 h-4 md:h-5 transition-colors ${isScrolled ? 'text-green-600' : 'text-white'}`} />
+                  <span className={`font-bold text-sm md:text-base transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'}`}>{user.points}</span>
+                  <span className={`text-xs hidden sm:inline transition-colors ${isScrolled ? 'text-gray-500' : 'text-white/80'}`}>pts</span>
                 </div>
 
                 {/* Avatar Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center gap-2 bg-white border border-gray-200 p-2.5 rounded-full hover:scale-105 transition-transform shadow-sm">
+                  <button className={`flex items-center gap-2 p-2.5 rounded-full hover:scale-105 transition-all shadow-sm ${
+                    isScrolled 
+                      ? 'bg-white border border-gray-200' 
+                      : 'bg-white/20 backdrop-blur-sm border border-white/30'
+                  }`}>
                     <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center">
                       <User className="w-5 h-5 text-white" />
                     </div>
@@ -121,10 +150,10 @@ export default function Header() {
                     </div>
                     <button
                       onClick={logout}
-                      className="w-full flex items-center gap-2 p-4 text-red-600 hover:bg-red-50 transition-colors rounded-b-xl"
+                      className="w-full p-4 text-left hover:bg-red-50 text-red-600 font-medium transition-colors flex items-center gap-2 rounded-b-xl"
                     >
                       <LogOut className="w-4 h-4" />
-                      <span>Logout</span>
+                      Logout
                     </button>
                   </div>
                 </div>
@@ -132,10 +161,20 @@ export default function Header() {
             ) : (
               <div className="flex items-center gap-2">
                 <Link href="/login">
-                  <Button variant="ghost" className="hover:bg-primary/10">Login</Button>
+                  <Button className={`transition-all ${
+                    isScrolled 
+                      ? 'gradient-primary text-white hover:opacity-90 shadow-glow-green'
+                      : 'bg-white text-green-600 hover:bg-white/90'
+                  }`}>
+                    Sign In
+                  </Button>
                 </Link>
                 <Link href="/register">
-                  <Button className="gradient-primary text-white hover:opacity-90 shadow-glow-green">
+                  <Button className={`border-2 transition-all ${
+                    isScrolled
+                      ? 'border-green-600 text-green-600 hover:bg-green-50 bg-transparent'
+                      : 'border-white text-white hover:bg-white/10 bg-transparent'
+                  }`}>
                     Sign Up
                   </Button>
                 </Link>

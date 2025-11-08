@@ -87,9 +87,9 @@ export default function HomePage() {
   }
 
   return (
-    <div className="overflow-hidden">
+    <div className="w-full">
       {/* Hero Section - Main Screen */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-50 to-teal-50">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-green-50 to-teal-50 -mt-20 pt-20">
         {/* Animated Background - Optimized */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
