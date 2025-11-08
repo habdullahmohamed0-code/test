@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { ArrowRight, Recycle, Users, TrendingUp, Sparkles, Package, ShoppingBag, Key } from 'lucide-react'
+import { ArrowRight, Recycle, Users, TrendingUp, Sparkles, Package, ShoppingBag, Key, Play } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
@@ -24,7 +25,7 @@ export default function HomePage() {
   }, [])
 
   const fetchRVMData = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('rvm_status')
       .select('*')
       .single()
@@ -40,7 +41,7 @@ export default function HomePage() {
   }
 
   const fetchProducts = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('products')
       .select('*')
       .eq('is_active', true)
@@ -54,124 +55,193 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section - Main Screen */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-white to-secondary/20">
-        {/* Floating background elements */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+        {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, 0],
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
             }}
             transition={{
-              duration: 6,
+              duration: 20,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "linear"
             }}
-            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+            className="absolute -top-20 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
-              y: [0, 20, 0],
-              rotate: [0, -5, 0],
+              scale: [1.2, 1, 1.2],
+              rotate: [0, -90, 0],
             }}
             transition={{
-              duration: 8,
+              duration: 25,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "linear"
             }}
-            className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
+            className="absolute -bottom-20 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
           />
         </div>
 
         <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Floating Team Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Card className="backdrop-blur-lg bg-white/90 shadow-2xl border-2 border-primary/20">
-                <CardHeader>
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.3, type: "spring" }}
-                    className="mx-auto w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mb-6"
-                  >
-                    <Recycle className="w-12 h-12 text-white" />
-                  </motion.div>
-                  <CardTitle className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    RecyCool
-                  </CardTitle>
-                  <CardDescription className="text-xl text-gray-700 mt-4">
-                    Gerakan Keberlanjutan untuk Indonesia yang Lebih Hijau
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    RecyCool adalah gerakan keberlanjutan yang dipimpin siswa di SMA Pradita Dirgantara,
-                    memberdayakan <span className="font-bold text-primary">400+ anggota komunitas</span> untuk
-                    mengatasi krisis plastik Indonesia melalui inovasi waste management dan circular economy solutions.
-                  </p>
-                  <div className="flex flex-wrap gap-4 justify-center">
-                    <Link href="/products">
-                      <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
-                        Lihat Produk
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </Link>
-                    <Link href="/about">
-                      <Button size="lg" variant="outline">
-                        Tentang Kami
-                      </Button>
-                    </Link>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-block mb-4"
+                >
+                  <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">
+                    🌍 Student-Led Sustainability Movement
+                  </span>
+                </motion.div>
+                
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 font-[family-name:var(--font-poppins)]">
+                  Welcome to{' '}
+                  <span className="text-gradient">RecyCool</span>
+                </h1>
+                
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                  Empowering <span className="font-bold text-primary">400+ community members</span> at SMA Pradita Dirgantara to combat Indonesia's plastic crisis through innovative waste management and circular economy solutions.
+                </p>
+
+                <div className="flex flex-wrap gap-4 mb-8">
+                  <Link href="/products">
+                    <Button size="lg" className="gradient-primary text-white hover:opacity-90 shadow-glow-green group">
+                      Explore Products
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link href="/about">
+                    <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <p className="text-3xl font-bold text-primary">400+</p>
+                    <p className="text-sm text-gray-600">Members</p>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  <div>
+                    <p className="text-3xl font-bold text-secondary">{rvmData.totalBottles}</p>
+                    <p className="text-sm text-gray-600">Bottles Collected</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-accent">{rvmData.totalUsers}</p>
+                    <p className="text-sm text-gray-600">Active Users</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Right Image/Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                  {/* Main Image Placeholder - Replace with team photo */}
+                  <Image
+                    src="https://via.placeholder.com/600x700/22c55e/ffffff?text=RecyCool+Team"
+                    alt="RecyCool Team"
+                    width={600}
+                    height={700}
+                    className="w-full h-auto object-cover"
+                  />
+                  
+                  {/* Floating Card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                    className="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl"
+                  >
+                    <p className="text-sm font-semibold text-gray-700 mb-2">Our Mission</p>
+                    <p className="text-gray-600 text-sm">
+                      Creating a sustainable future through innovative recycling technology and community empowerment.
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Decorative Elements */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute -top-6 -right-6 w-20 h-20 bg-primary/20 rounded-full blur-xl"
+                />
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full blur-xl"
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll Indicator */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary rounded-full mt-2" />
+            <div className="w-1.5 h-3 bg-primary rounded-full mt-2" />
           </div>
         </motion.div>
       </section>
 
       {/* Problem Background Section */}
-      <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+      <section className="py-24 bg-gradient-to-br from-red-50/50 via-orange-50/50 to-yellow-50/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">
-              Krisis Plastik di Indonesia
-            </h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-[family-name:var(--font-poppins)]">
+                The Plastic Crisis
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Understanding the magnitude of Indonesia's plastic pollution problem
+              </p>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="h-full bg-white/80 backdrop-blur border-2 border-red-200">
+                <Card className="h-full glass border-2 border-red-200 hover:shadow-xl transition-all">
                   <CardHeader>
-                    <CardTitle className="text-3xl font-bold text-red-600">64 Juta Ton</CardTitle>
+                    <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-4">
+                      <span className="text-3xl">📊</span>
+                    </div>
+                    <CardTitle className="text-4xl font-bold text-red-600 mb-2">64M</CardTitle>
+                    <CardDescription className="text-base font-semibold text-gray-700">
+                      Tons of Plastic Waste Annually
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700">
-                      Indonesia menghasilkan sekitar <span className="font-semibold">64 juta ton sampah plastik</span> setiap tahun
-                      (Badan Pusat Statistik)
+                    <p className="text-gray-600">
+                      According to BPS (Statistics Indonesia), Indonesia generates approximately 64 million tons of plastic waste every year.
                     </p>
                   </CardContent>
                 </Card>
@@ -182,34 +252,46 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="h-full bg-white/80 backdrop-blur border-2 border-orange-200">
+                <Card className="h-full glass border-2 border-orange-200 hover:shadow-xl transition-all">
                   <CardHeader>
-                    <CardTitle className="text-3xl font-bold text-orange-600">40%</CardTitle>
+                    <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4">
+                      <span className="text-3xl">📦</span>
+                    </div>
+                    <CardTitle className="text-4xl font-bold text-orange-600 mb-2">40%</CardTitle>
+                    <CardDescription className="text-base font-semibold text-gray-700">
+                      Single-Use Packaging
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700">
-                      <span className="font-semibold">40% dari total plastik</span> yang diproduksi di Indonesia
-                      digunakan untuk kemasan sekali pakai yang langsung dibuang
+                    <p className="text-gray-600">
+                      40% of total plastic produced in Indonesia is used for single-use packaging that is immediately discarded after use.
                     </p>
                   </CardContent>
                 </Card>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="h-full bg-white/80 backdrop-blur border-2 border-yellow-200">
+                <Card className="h-full glass border-2 border-yellow-200 hover:shadow-xl transition-all">
                   <CardHeader>
-                    <CardTitle className="text-3xl font-bold text-yellow-600">9%</CardTitle>
+                    <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-4">
+                      <span className="text-3xl">♻️</span>
+                    </div>
+                    <CardTitle className="text-4xl font-bold text-yellow-600 mb-2">9%</CardTitle>
+                    <CardDescription className="text-base font-semibold text-gray-700">
+                      Global Recycling Rate
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700">
-                      Rendahnya tingkat daur ulang, hanya sekitar <span className="font-semibold">9% plastik global</span> yang
-                      benar-benar didaur ulang (UNEP, 2022)
+                    <p className="text-gray-600">
+                      Low recycling rates are a major challenge. Only about 9% of global plastic is actually recycled (UNEP, 2022).
                     </p>
                   </CardContent>
                 </Card>
@@ -220,20 +302,22 @@ export default function HomePage() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Solusi Kami
-            </h2>
-            <p className="text-center text-gray-600 mb-12 text-lg">
-              Inovasi untuk mengatasi krisis plastik
-            </p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient font-[family-name:var(--font-poppins)]">
+                Our Solutions
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Innovative approaches to tackle the plastic crisis
+              </p>
+            </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               <motion.div
@@ -241,18 +325,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full bg-white border-2 border-primary/30 hover:shadow-xl transition-shadow">
+                <Card className="h-full glass border-2 border-primary/30 hover:border-primary hover:shadow-glow-green transition-all">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mb-4">
-                      <Package className="w-8 h-8 text-white" />
+                    <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Package className="w-10 h-10 text-white" />
                     </div>
-                    <CardTitle className="text-2xl">Waste2Pay RVM</CardTitle>
+                    <CardTitle className="text-2xl text-center">Waste2Pay RVM</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Membuat prototype Reverse Vending Machine yang dapat menukar botol plastik dengan poin rewards
+                  <CardContent className="text-center">
+                    <p className="text-gray-600">
+                      Our innovative Reverse Vending Machine prototype that rewards users with points for every plastic bottle they recycle.
                     </p>
                   </CardContent>
                 </Card>
@@ -263,18 +347,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full bg-white border-2 border-secondary/30 hover:shadow-xl transition-shadow">
+                <Card className="h-full glass border-2 border-secondary/30 hover:border-secondary hover:shadow-glow-blue transition-all">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-br from-secondary to-accent rounded-full flex items-center justify-center mb-4">
-                      <Recycle className="w-8 h-8 text-white" />
+                    <div className="w-20 h-20 gradient-secondary rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Recycle className="w-10 h-10 text-white" />
                     </div>
-                    <CardTitle className="text-2xl">Recycling Innovation</CardTitle>
+                    <CardTitle className="text-2xl text-center">Recycling Innovation</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Mendaur ulang sampah plastik menjadi produk yang lebih berguna dan bernilai ekonomi
+                  <CardContent className="text-center">
+                    <p className="text-gray-600">
+                      Transforming plastic waste into valuable products using 3D printing technology with filament made from recycled plastic bottles.
                     </p>
                   </CardContent>
                 </Card>
@@ -285,18 +369,18 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
               >
-                <Card className="h-full bg-white border-2 border-accent/30 hover:shadow-xl transition-shadow">
+                <Card className="h-full glass border-2 border-accent/30 hover:border-accent hover:shadow-soft transition-all">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center mb-4">
-                      <Users className="w-8 h-8 text-white" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Users className="w-10 h-10 text-white" />
                     </div>
-                    <CardTitle className="text-2xl">Community Movement</CardTitle>
+                    <CardTitle className="text-2xl text-center">Community Movement</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">
-                      Mengajak teman-teman untuk mengurangi penggunaan botol plastik sekali pakai
+                  <CardContent className="text-center">
+                    <p className="text-gray-600">
+                      Encouraging our community to reduce single-use plastic bottles and adopt sustainable practices in daily life.
                     </p>
                   </CardContent>
                 </Card>
@@ -307,75 +391,81 @@ export default function HomePage() {
       </section>
 
       {/* Waste2Pay RVM Data Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-[family-name:var(--font-poppins)]">
                 Waste2Pay Statistics
               </h2>
-              <p className="text-gray-600 text-lg">Real-time data dari vending machine kami</p>
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full">
-                <div className={`w-3 h-3 rounded-full ${rvmData.isOnline ? 'bg-primary animate-pulse' : 'bg-gray-400'}`} />
-                <span className="text-sm font-semibold">{rvmData.isOnline ? 'Online' : 'Offline'}</span>
+              <p className="text-xl text-gray-600 mb-6">Real-time data from our vending machine</p>
+              <div className="inline-flex items-center gap-2 glass px-6 py-3 rounded-full">
+                <div className={`w-3 h-3 rounded-full ${rvmData.isOnline ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
+                <span className="font-semibold">{rvmData.isOnline ? 'System Online' : 'System Offline'}</span>
               </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30">
+                <Card className="text-center glass border-2 border-primary/30 hover:shadow-glow-green transition-all">
                   <CardHeader>
-                    <CardTitle className="text-6xl font-bold text-primary">
+                    <div className="text-6xl mb-2">🍾</div>
+                    <CardTitle className="text-5xl font-bold text-primary">
                       {rvmData.totalBottles.toLocaleString()}
                     </CardTitle>
-                    <CardDescription className="text-lg font-semibold text-gray-700">
-                      Botol Terkumpul
+                    <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
+                      Bottles Collected
                     </CardDescription>
                   </CardHeader>
                 </Card>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="text-center bg-gradient-to-br from-secondary/10 to-secondary/5 border-2 border-secondary/30">
+                <Card className="text-center glass border-2 border-secondary/30 hover:shadow-glow-blue transition-all">
                   <CardHeader>
-                    <CardTitle className="text-6xl font-bold text-secondary">
+                    <div className="text-6xl mb-2">⏰</div>
+                    <CardTitle className="text-5xl font-bold text-secondary">
                       {rvmData.onlineHours.toFixed(0)}
                     </CardTitle>
-                    <CardDescription className="text-lg font-semibold text-gray-700">
-                      Jam Online
+                    <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
+                      Hours Online
                     </CardDescription>
                   </CardHeader>
                 </Card>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
+                whileHover={{ y: -5 }}
               >
-                <Card className="text-center bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent/30">
+                <Card className="text-center glass border-2 border-accent/30 hover:shadow-soft transition-all">
                   <CardHeader>
-                    <CardTitle className="text-6xl font-bold text-accent">
+                    <div className="text-6xl mb-2">👥</div>
+                    <CardTitle className="text-5xl font-bold text-accent">
                       {rvmData.totalUsers.toLocaleString()}
                     </CardTitle>
-                    <CardDescription className="text-lg font-semibold text-gray-700">
-                      Pengguna Aktif
+                    <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
+                      Active Users
                     </CardDescription>
                   </CardHeader>
                 </Card>
@@ -385,8 +475,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="py-20 bg-gradient-to-br from-secondary/10 to-primary/10">
+      {/* Products Preview Section */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -394,12 +484,12 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto"
           >
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
-                Produk Kami
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 font-[family-name:var(--font-poppins)]">
+                Check Our Products
               </h2>
-              <p className="text-gray-600 text-lg">
-                Merchandise dari plastik daur ulang
+              <p className="text-xl text-gray-600">
+                Eco-friendly merchandise made from recycled plastic
               </p>
             </div>
 
@@ -413,28 +503,40 @@ export default function HomePage() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -10 }}
                 >
-                  <Card className="h-full bg-white hover:shadow-2xl transition-all">
-                    <CardHeader>
-                      <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center mb-4">
-                        {product.category === 'Accessories' && <Key className="w-20 h-20 text-primary" />}
-                        {product.category === 'Bags' && <ShoppingBag className="w-20 h-20 text-secondary" />}
-                        {product.category === 'Home Decor' && <Sparkles className="w-20 h-20 text-accent" />}
+                  <Card className="h-full glass hover:shadow-2xl transition-all overflow-hidden group">
+                    <CardHeader className="p-0">
+                      <div className="relative w-full h-56 bg-gradient-to-br from-primary/20 to-secondary/20 overflow-hidden">
+                        {/* Product Image Placeholder */}
+                        <Image
+                          src={`https://via.placeholder.com/400x300/${product.category === 'Accessories' ? '22c55e' : product.category === 'Bags' ? '0ea5e9' : '14b8a6'}/ffffff?text=${encodeURIComponent(product.name)}`}
+                          alt={product.name}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
-                      <CardTitle className="text-xl">{product.name}</CardTitle>
-                      <CardDescription>{product.description}</CardDescription>
+                      <div className="p-6">
+                        <CardTitle className="text-xl mb-2">{product.name}</CardTitle>
+                        <CardDescription>{product.description}</CardDescription>
+                      </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center mb-3">
                         <div>
                           <p className="text-sm text-gray-500">Points Required</p>
-                          <p className="text-2xl font-bold text-primary">{product.points_required}</p>
+                          <p className="text-3xl font-bold text-primary">{product.points_required}</p>
                         </div>
                         {product.bottles_needed && (
                           <div className="text-right">
-                            <p className="text-sm text-gray-500">Botol Dibutuhkan</p>
-                            <p className="text-xl font-semibold text-secondary">{product.bottles_needed}</p>
+                            <p className="text-sm text-gray-500">Made from</p>
+                            <p className="text-xl font-semibold text-secondary">{product.bottles_needed} bottles</p>
                           </div>
                         )}
+                      </div>
+                      <div className="text-center">
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${product.stock > 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                          {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                        </span>
                       </div>
                     </CardContent>
                   </Card>
@@ -444,9 +546,9 @@ export default function HomePage() {
 
             <div className="text-center">
               <Link href="/products">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
-                  Lihat Semua Produk
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button size="lg" className="gradient-primary text-white hover:opacity-90 shadow-glow-green group">
+                  View All Products
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
@@ -454,34 +556,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Join Our Team Section */}
-      <section className="py-20 bg-gradient-to-br from-primary via-secondary to-accent text-white">
-        <div className="container mx-auto px-4">
+      {/* Join Our Team CTA */}
+      <section className="py-24 gradient-primary text-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 overflow-hidden opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[family-name:var(--font-poppins)]">
               Join Our Movement
             </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Jadilah bagian dari perubahan! Bergabunglah dengan 400+ member RecyCool
-              dan bantu selamatkan lingkungan dari krisis plastik.
+            <p className="text-xl mb-10 opacity-95 leading-relaxed">
+              Be part of the change! Join 400+ RecyCool members and help save the environment from plastic pollution. Together, we can make Indonesia greener.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/register">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-                  Daftar Sekarang
+                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 shadow-xl">
+                  Sign Up Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/about">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  Pelajari Lebih Lanjut
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                  Learn More
                 </Button>
               </Link>
+            </div>
+
+            {/* Decorative stats */}
+            <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+              <div>
+                <p className="text-4xl font-bold mb-2">♻️</p>
+                <p className="text-lg opacity-90">Sustainable</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold mb-2">🌱</p>
+                <p className="text-lg opacity-90">Eco-Friendly</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold mb-2">🤝</p>
+                <p className="text-lg opacity-90">Community</p>
+              </div>
             </div>
           </motion.div>
         </div>

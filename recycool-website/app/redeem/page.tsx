@@ -55,12 +55,12 @@ export default function RedeemPage() {
     if (!user || isRedeeming) return
 
     if (user.points < product.points_required) {
-      alert('Poin tidak cukup!')
+      alert('Insufficient points!')
       return
     }
 
     if (product.stock < 1) {
-      alert('Stok habis!')
+      alert('Out of stock!')
       return
     }
 
@@ -111,10 +111,10 @@ export default function RedeemPage() {
       localStorage.setItem('recycool_user', JSON.stringify(updatedUser))
       window.location.reload()
 
-      alert(`Berhasil redeem ${product.name}!\nTicket Code: ${ticketCode}`)
+      alert(`Successfully redeemed ${product.name}!\nTicket Code: ${ticketCode}`)
     } catch (error) {
       console.error('Redeem error:', error)
-      alert('Terjadi kesalahan saat redeem. Silakan coba lagi.')
+      alert('An error occurred during redemption. Please try again.')
     } finally {
       setIsRedeeming(false)
       setSelectedProduct(null)
@@ -184,13 +184,13 @@ export default function RedeemPage() {
             <CardHeader>
               <CardTitle className="text-4xl">Redeem Points</CardTitle>
               <CardDescription className="text-white/90 text-lg">
-                Tukarkan poin kamu dengan merchandise keren!
+                Exchange your points for awesome merchandise!
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm opacity-80">Poin kamu saat ini:</p>
+                  <p className="text-sm opacity-80">Your current points:</p>
                   <p className="text-5xl font-bold">{user.points}</p>
                 </div>
                 <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
@@ -203,7 +203,7 @@ export default function RedeemPage() {
 
         {/* Products */}
         <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800">Produk Tersedia</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800">Available Products</h2>
           {isLoading ? (
             <div className="text-center py-12">
               <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
@@ -212,7 +212,7 @@ export default function RedeemPage() {
             <Card>
               <CardContent className="text-center py-12">
                 <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">Belum ada produk tersedia untuk di-redeem</p>
+                <p className="text-gray-600">No products available for redemption yet</p>
               </CardContent>
             </Card>
           ) : (
@@ -252,9 +252,9 @@ export default function RedeemPage() {
                         {isRedeeming && selectedProduct?.id === product.id ? (
                           'Processing...'
                         ) : user.points < product.points_required ? (
-                          'Poin Tidak Cukup'
+                          'Insufficient Points'
                         ) : product.stock < 1 ? (
-                          'Stok Habis'
+                          'Out of Stock'
                         ) : (
                           'Redeem Sekarang'
                         )}
@@ -269,12 +269,12 @@ export default function RedeemPage() {
 
         {/* Redemption History */}
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800">Riwayat Redeem</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800">Redemption History</h2>
           {redemptions.length === 0 ? (
             <Card>
               <CardContent className="text-center py-12">
                 <Ticket className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">Belum ada riwayat redeem</p>
+                <p className="text-gray-600">No redemption history yet</p>
               </CardContent>
             </Card>
           ) : (

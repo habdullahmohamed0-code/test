@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "RecyCool - Gerakan Keberlanjutan untuk Indonesia",
-  description: "RecyCool adalah gerakan keberlanjutan yang dipimpin siswa di SMA Pradita Dirgantara, memberdayakan komunitas untuk mengatasi krisis plastik Indonesia melalui inovasi waste management dan circular economy.",
+  title: "RecyCool - Student-Led Sustainability Movement",
+  description: "RecyCool is a student-led sustainability movement at SMA Pradita Dirgantara, empowering 400+ community members to combat Indonesia's plastic crisis through innovative waste management and circular economy solutions.",
 };
 
 export default function RootLayout({
@@ -26,9 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${poppins.variable} antialiased`}
       >
         <AuthProvider>
           <Header />

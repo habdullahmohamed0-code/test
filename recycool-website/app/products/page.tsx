@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { supabase } from '@/lib/supabase'
 import { Key, ShoppingBag, Sparkles, Package, Printer } from 'lucide-react'
@@ -15,7 +16,7 @@ export default function ProductsPage() {
   }, [])
 
   const fetchProducts = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('products')
       .select('*')
       .eq('is_active', true)
@@ -43,25 +44,38 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-secondary/5">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 gradient-primary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Katalog Produk
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-6"
+            >
+              <Package className="w-10 h-10" />
+            </motion.div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[family-name:var(--font-poppins)]">
+              Product Catalog
             </h1>
-            <p className="text-xl opacity-90">
-              Merchandise berkualitas dari plastik daur ulang. Setiap pembelian membantu mengurangi sampah plastik!
+            <p className="text-xl opacity-95 leading-relaxed">
+              Quality merchandise made from recycled plastic. Every purchase helps reduce plastic waste!
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* 3D Printing Info */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,42 +83,46 @@ export default function ProductsPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <Card className="bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
-              <CardHeader>
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                    <Printer className="w-10 h-10 text-white" />
+            <Card className="glass border-2 border-primary/30 hover:shadow-glow-green transition-all overflow-hidden">
+              <div className="md:flex">
+                <div className="md:w-1/3 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center p-8">
+                  <div className="w-32 h-32 gradient-primary rounded-2xl flex items-center justify-center shadow-glow-green">
+                    <Printer className="w-16 h-16 text-white" />
                   </div>
                 </div>
-                <CardTitle className="text-3xl text-center">Inovasi 3D Printing</CardTitle>
-                <CardDescription className="text-center text-lg">
-                  Teknologi untuk masa depan berkelanjutan
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-gray-700 text-lg">
-                  Kami menggunakan sistem <span className="font-bold text-primary">3D printing</span> dengan filament
-                  yang dibuat dari <span className="font-bold text-secondary">botol plastik daur ulang</span>.
-                  Setiap produk diproduksi dengan presisi tinggi dan ramah lingkungan.
-                </p>
-              </CardContent>
+                <div className="md:w-2/3">
+                  <CardHeader>
+                    <CardTitle className="text-3xl">3D Printing Innovation</CardTitle>
+                    <CardDescription className="text-lg">
+                      Technology for a sustainable future
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700 text-lg leading-relaxed">
+                      We use <span className="font-bold text-primary">3D printing systems</span> with filament
+                      made from <span className="font-bold text-secondary">recycled plastic bottles</span>.
+                      Each product is manufactured with high precision and is environmentally friendly.
+                    </p>
+                  </CardContent>
+                </div>
+              </div>
             </Card>
           </motion.div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           {isLoading ? (
             <div className="text-center py-20">
-              <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-              <p className="mt-4 text-gray-600">Loading products...</p>
+              <div className="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+              <p className="text-gray-600">Loading products...</p>
             </div>
           ) : products.length === 0 ? (
             <div className="text-center py-20">
               <Package className="w-20 h-20 text-gray-400 mx-auto mb-4" />
-              <p className="text-xl text-gray-600">Belum ada produk tersedia</p>
+              <p className="text-xl text-gray-600">No products available yet</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -117,30 +135,35 @@ export default function ProductsPage() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -10 }}
                 >
-                  <Card className="h-full bg-white hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-primary/30">
-                    <CardHeader>
-                      <div className="w-full h-64 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                        {getIcon(product.category)}
-                      </div>
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <CardTitle className="text-2xl mb-2">{product.name}</CardTitle>
-                          <CardDescription className="text-base">{product.description}</CardDescription>
-                        </div>
+                  <Card className="h-full glass hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-primary/30 overflow-hidden group">
+                    <CardHeader className="p-0">
+                      <div className="relative w-full h-64 bg-gradient-to-br from-primary/10 to-secondary/10 overflow-hidden">
+                        {/* Product Image Placeholder - Replace with actual images */}
+                        <Image
+                          src={`https://via.placeholder.com/400x300/${product.category === 'Accessories' ? '22c55e' : product.category === 'Bags' ? '0ea5e9' : '14b8a6'}/ffffff?text=${encodeURIComponent(product.name)}`}
+                          alt={product.name}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
                         {product.stock > 0 ? (
-                          <span className="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
-                            Tersedia
+                          <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                            In Stock
                           </span>
                         ) : (
-                          <span className="bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full">
-                            Habis
+                          <span className="absolute top-4 right-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                            Out of Stock
                           </span>
                         )}
+                      </div>
+                      <div className="p-6">
+                        <CardTitle className="text-2xl mb-2">{product.name}</CardTitle>
+                        <CardDescription className="text-base">{product.description}</CardDescription>
                       </div>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <div className="flex justify-between items-center p-4 bg-primary/5 rounded-lg">
+                        <div className="flex justify-between items-center p-4 glass rounded-xl">
                           <div>
                             <p className="text-sm text-gray-600 mb-1">Points Required</p>
                             <p className="text-3xl font-bold text-primary">{product.points_required}</p>
@@ -152,30 +175,27 @@ export default function ProductsPage() {
                         </div>
 
                         {product.bottles_needed && (
-                          <div className="p-4 bg-secondary/5 rounded-lg border border-secondary/20">
+                          <div className="p-4 glass rounded-xl border-2 border-secondary/20">
                             <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center">
-                                  <Package className="w-5 h-5 text-secondary" />
+                              <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+                                  <Package className="w-6 h-6 text-secondary" />
                                 </div>
                                 <div>
-                                  <p className="text-sm text-gray-600">Dibuat dari</p>
-                                  <p className="text-xl font-bold text-secondary">
-                                    {product.bottles_needed} Botol
+                                  <p className="text-sm text-gray-600">Made from</p>
+                                  <p className="text-2xl font-bold text-secondary">
+                                    {product.bottles_needed} bottles
                                   </p>
                                 </div>
-                              </div>
-                              <div className="text-xs text-gray-500 max-w-[100px] text-right">
-                                Per 1 item
                               </div>
                             </div>
                           </div>
                         )}
 
-                        <div className="pt-2">
-                          <p className="text-xs text-gray-500 text-center italic">
-                            Kategori: {product.category}
-                          </p>
+                        <div className="pt-2 text-center">
+                          <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
+                            {product.category}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -188,24 +208,29 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24 gradient-secondary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-4xl font-bold mb-6">
-              Dapatkan Produk Ini!
+            <h2 className="text-4xl font-bold mb-6 font-[family-name:var(--font-poppins)]">
+              Get These Products!
             </h2>
-            <p className="text-xl opacity-90 mb-8">
-              Kumpulkan poin dengan menyetorkan botol plastik di Waste2Pay RVM kami,
-              lalu tukarkan dengan merchandise keren ini!
+            <p className="text-xl opacity-95 mb-8 leading-relaxed">
+              Collect points by depositing plastic bottles in our Waste2Pay RVM,
+              then exchange them for cool merchandise!
             </p>
-            <div className="bg-white/20 backdrop-blur-md p-6 rounded-lg inline-block">
-              <p className="text-sm mb-2">Cara mendapatkan poin:</p>
-              <p className="text-3xl font-bold">1 Botol = 10 Points</p>
+            <div className="glass p-8 rounded-2xl inline-block">
+              <p className="text-sm mb-3 opacity-90">How to earn points:</p>
+              <p className="text-4xl font-bold">1 Bottle = 10 Points</p>
             </div>
           </motion.div>
         </div>
