@@ -21,9 +21,9 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-glow-green transition-transform group-hover:scale-110">
-              {/* Placeholder for logo - replace with actual logo */}
+              {/* RecyCool Logo - using image from public folder */}
               <Image
-                src="https://via.placeholder.com/48x48/22c55e/ffffff?text=RC"
+                src="/recycool-logo.jpeg"
                 alt="RecyCool Logo"
                 width={48}
                 height={48}
