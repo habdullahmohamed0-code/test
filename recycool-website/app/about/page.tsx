@@ -66,7 +66,10 @@ export default function AboutPage() {
               About RecyCool
             </h1>
             <p className="text-xl opacity-95 leading-relaxed">
-              A student-led movement for a greener and more sustainable Indonesia
+              Be Cool, and Keep the Earth Cool
+            </p>
+            <p className="text-lg opacity-90 mt-3">
+              A student-led sustainability project at SMA Pradita Dirgantara
             </p>
           </motion.div>
         </div>
@@ -91,8 +94,7 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-lg text-gray-700 leading-relaxed">
-                      To become a pioneer sustainability movement in Indonesia that empowers the younger generation
-                      to create innovative solutions in tackling the plastic crisis and building a sustainable circular economy.
+                      To become a pioneer sustainability movement that demonstrates how technology, innovation, and real action can work together to create cleaner, greener, and more environmentally conscious Indonesia. Through RecyCool, we aim to build a sustainable circular economy system that transforms waste into valuable resources.
                     </p>
                   </CardContent>
                 </Card>
@@ -114,15 +116,19 @@ export default function AboutPage() {
                     <ul className="space-y-3 text-lg text-gray-700">
                       <li className="flex items-start gap-3">
                         <span className="text-secondary font-bold mt-1">✓</span>
-                        <span>Reduce plastic waste through Waste2Pay RVM technology</span>
+                        <span>Support SDG 12: Responsible Consumption and Production through innovative waste management</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-secondary font-bold mt-1">✓</span>
-                        <span>Recycle plastic into valuable products</span>
+                        <span>Contribute to Indonesia's Zero Waste 2025 target by reducing waste by 30% and processing 70% of waste into useful products</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-secondary font-bold mt-1">✓</span>
-                        <span>Empower the school community to care for the environment</span>
+                        <span>Build a culture of caring for the environment and increase awareness of waste management</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-secondary font-bold mt-1">✓</span>
+                        <span>Create creative and environmentally friendly solutions for plastic waste through circular economy</span>
                       </li>
                     </ul>
                   </CardContent>
@@ -171,8 +177,10 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      According to BPS (Statistics Indonesia), Indonesia generates approximately 64 million tons
-                      of plastic waste every year, making us one of the largest plastic waste contributors globally.
+                      According to the Indonesian Plastics Industry Association (Inaplas) and BPS (Statistics Indonesia), 
+                      Indonesia generates approximately 64 million tons of plastic waste every year, making us one of the 
+                      largest plastic waste contributors globally. This waste pollutes various ecosystems from soil, air, 
+                      to water bodies and the living creatures within them.
                     </p>
                   </CardContent>
                 </Card>
@@ -197,8 +205,9 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700">
-                      40% of total plastic produced in Indonesia is used for single-use packaging that is
-                      immediately discarded after use, creating massive waste accumulation.
+                      According to the Ministry of Environment and Forestry (KLHK, 2023), approximately 40% of total 
+                      plastic is used as single-use packaging such as beverage bottles, plastic bags, straws, and sachets 
+                      that are immediately discarded after use, creating massive waste accumulation that is difficult to decompose.
                     </p>
                   </CardContent>
                 </Card>
@@ -269,8 +278,10 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-700">
-                      Creating a <span className="font-semibold">Reverse Vending Machine</span> prototype that
-                      makes it easy for people to exchange plastic bottles for reward points that can be redeemed for merchandise.
+                      Our <span className="font-semibold">Waste2Pay Reverse Vending Machine</span> is equipped with advanced technology 
+                      including camera sensors, servo motors, ultrasonic sensors, and touchscreen monitor. The machine recognizes the type 
+                      and quantity of waste, identifies users through their unique account code, and automatically records digital points 
+                      that can be exchanged for recycled products.
                     </p>
                   </CardContent>
                 </Card>
@@ -292,8 +303,9 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-700">
-                      Recycling plastic waste into more useful and economically valuable products using
-                      <span className="font-semibold"> 3D printing</span> technology with filament made from recycled plastic.
+                      In partnership with <span className="font-semibold">Paste Lab</span>, an experienced and highly credible waste manager, 
+                      we transform collected plastic waste into functional products such as 3D printer filaments, coasters, chairs, tables, 
+                      and other creative crafts. This implements the principles of reduce, reuse, and recycle in a true circular economy model.
                     </p>
                   </CardContent>
                 </Card>
@@ -315,8 +327,9 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-700">
-                      Encouraging friends to <span className="font-semibold">stop using single-use plastic bottles</span> and
-                      raising awareness about the importance of responsible waste management.
+                      We conduct awareness campaigns involving all students and school community through educational sessions, 
+                      poster creation, social media campaigns, and interactive games designed to foster environmental care in a fun way. 
+                      Our digital platform allows real-time monitoring of contributions, point redemption, and learning about waste management.
                     </p>
                   </CardContent>
                 </Card>
@@ -340,7 +353,10 @@ export default function AboutPage() {
                 Meet Our Team
               </h2>
               <p className="text-xl text-gray-600">
-                Dedicated students from SMA Pradita Dirgantara for the environment
+                Dedicated students from SMA Pradita Dirgantara leading the sustainability movement
+              </p>
+              <p className="text-base text-gray-500 mt-2">
+                Target: 400+ community members (±300 students + ±100 staff & families)
               </p>
             </div>
 
@@ -429,21 +445,26 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl font-bold text-center mb-12 font-[family-name:var(--font-poppins)]">
+            <h2 className="text-4xl font-bold text-center mb-6 font-[family-name:var(--font-poppins)]">
               Our Achievements
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <p className="text-center text-lg opacity-90 mb-8">Supporting Indonesia's Zero Waste 2025 & SDG 12</p>
+            <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
                 <p className="text-6xl font-bold mb-2">400+</p>
                 <p className="text-xl opacity-95">Community Members</p>
               </div>
               <div className="text-center">
                 <p className="text-6xl font-bold mb-2">1</p>
-                <p className="text-xl opacity-95">RVM Prototype</p>
+                <p className="text-xl opacity-95">Waste2Pay RVM</p>
               </div>
               <div className="text-center">
-                <p className="text-6xl font-bold mb-2">100%</p>
-                <p className="text-xl opacity-95">Dedicated to Environment</p>
+                <p className="text-6xl font-bold mb-2">30%</p>
+                <p className="text-xl opacity-95">Waste Reduction Target</p>
+              </div>
+              <div className="text-center">
+                <p className="text-6xl font-bold mb-2">70%</p>
+                <p className="text-xl opacity-95">Waste Processing Target</p>
               </div>
             </div>
           </motion.div>

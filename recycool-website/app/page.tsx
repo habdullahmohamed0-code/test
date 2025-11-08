@@ -108,7 +108,7 @@ export default function HomePage() {
                 </h1>
                 
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Empowering <span className="font-bold text-primary">400+ community members</span> at SMA Pradita Dirgantara to combat Indonesia's plastic crisis through innovative waste management and circular economy solutions.
+                  A student-led sustainability project at SMA Pradita Dirgantara, empowering <span className="font-bold text-primary">400+ community members</span> (300 students + 100 staff) to combat Indonesia's plastic crisis through our innovative Waste2Pay vending machine and circular economy solutions.
                 </p>
 
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -168,7 +168,7 @@ export default function HomePage() {
                   >
                     <p className="text-sm font-semibold text-gray-700 mb-2">Our Mission</p>
                     <p className="text-gray-600 text-sm">
-                      Creating a sustainable future through innovative recycling technology and community empowerment.
+                      Be Cool, and Keep the Earth Cool - Creating sustainable consumption and production patterns through our Waste2Pay reverse vending machine.
                     </p>
                   </motion.div>
                 </div>
@@ -230,7 +230,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600">
-                      According to BPS (Statistics Indonesia), Indonesia generates approximately 64 million tons of plastic waste every year.
+                      According to the Indonesian Plastics Industry Association (Inaplas) and BPS (Statistics Indonesia), Indonesia generates approximately 64 million tons of plastic waste every year.
                     </p>
                   </CardContent>
                 </Card>
@@ -254,7 +254,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600">
-                      40% of total plastic produced in Indonesia is used for single-use packaging that is immediately discarded after use.
+                      According to the Ministry of Environment and Forestry (KLHK, 2023), 40% of total plastic is used for single-use packaging like beverage bottles, plastic bags, straws, and sachets that are immediately discarded after use.
                     </p>
                   </CardContent>
                 </Card>
@@ -322,7 +322,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-600">
-                      Our innovative Reverse Vending Machine prototype that rewards users with points for every plastic bottle they recycle.
+                      Our innovative Reverse Vending Machine equipped with camera sensors, servo motors, ultrasonic sensors, and touchscreen monitor. Users donate plastic bottles and receive digital points automatically recorded on the RecyCool website.
                     </p>
                   </CardContent>
                 </Card>
@@ -343,7 +343,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-600">
-                      Transforming plastic waste into valuable products using 3D printing technology with filament made from recycled plastic bottles.
+                      In partnership with Paste Lab, we transform collected plastic bottles into functional products like 3D printer filaments, coasters, chairs, and creative crafts, implementing a true circular economy model.
                     </p>
                   </CardContent>
                 </Card>
@@ -364,7 +364,7 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-600">
-                      Encouraging our community to reduce single-use plastic bottles and adopt sustainable practices in daily life.
+                      Through educational campaigns, awareness sessions, social media campaigns, posters, and interactive games, we build an environmentally conscious culture at our school and beyond.
                     </p>
                   </CardContent>
                 </Card>
@@ -556,7 +556,7 @@ export default function HomePage() {
               Join Our Movement
             </h2>
             <p className="text-xl mb-10 opacity-95 leading-relaxed">
-              Be part of the change! Join 400+ RecyCool members and help save the environment from plastic pollution. Together, we can make Indonesia greener.
+              Be part of the change! Join 400+ RecyCool members at SMA Pradita Dirgantara and help save the environment from plastic pollution. Supporting SDG 12: Responsible Consumption and Production. Together, we can make Indonesia greener and contribute to Indonesia's Zero Waste 2025 target.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/register">

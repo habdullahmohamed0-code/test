@@ -19,8 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "RecyCool - Student-Led Sustainability Movement",
-  description: "RecyCool is a student-led sustainability movement at SMA Pradita Dirgantara, empowering 400+ community members to combat Indonesia's plastic crisis through innovative waste management and circular economy solutions.",
+  title: "RecyCool - Be Cool, and Keep the Earth Cool",
+  description: "RecyCool is a student-led sustainability project at SMA Pradita Dirgantara. Through our Waste2Pay reverse vending machine, we empower 400+ community members to combat Indonesia's plastic crisis. Supporting SDG 12 and Indonesia's Zero Waste 2025 target through circular economy solutions.",
 };
 
 export default function RootLayout({
