@@ -100,6 +100,29 @@ body {
   transform: translateZ(0);
 }
 
+/* Fix spacing and layout */
+section {
+  position: relative;
+}
+
+/* Ensure no gaps between sections */
+section + section {
+  margin-top: 0;
+}
+
+/* Mobile spacing improvements */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), sans-serif;
   font-weight: 700;

@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useAuth } from '@/context/AuthContext'
-import { registerUser } from '@/lib/auth'
+import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -14,22 +13,23 @@ import { Loader2, User, Mail, Lock, CheckCircle } from 'lucide-react'
 
 export default function RegisterPage() {
   const router = useRouter()
-  const { setUser } = useAuth()
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
-  const [emailConfirm, setEmailConfirm] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
+    setSuccess('')
 
-    // Validate email confirmation
-    if (email !== emailConfirm) {
-      setError('Email and confirmation email do not match')
+    // Validate password confirmation
+    if (password !== passwordConfirm) {
+      setError('Passwords do not match')
       setIsLoading(false)
       return
     }
@@ -41,14 +41,49 @@ export default function RegisterPage() {
       return
     }
 
-    const result = await registerUser(email, password, fullName)
+    try {
+      // Register user with Supabase Auth for email verification
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/login`,
+          data: {
+            full_name: fullName
+          }
+        }
+      })
 
-    if (result.success && result.user) {
-      setUser(result.user)
-      localStorage.setItem('recycool_user', JSON.stringify(result.user))
-      router.push('/')
-    } else {
-      setError(result.message)
+      if (authError) {
+        setError(authError.message)
+        setIsLoading(false)
+        return
+      }
+
+      // Insert into users table
+      if (authData.user) {
+        const { error: insertError } = await supabase
+          .from('users')
+          .insert([{
+            id: authData.user.id,
+            email: email,
+            full_name: fullName,
+            role: 'user',
+            points: 0
+          }])
+
+        if (insertError && insertError.code !== '23505') { // Ignore duplicate key error
+          console.error('Error inserting user:', insertError)
+        }
+      }
+
+      setSuccess('Registration successful! Please check your email to verify your account.')
+      
+      setTimeout(() => {
+        router.push('/login')
+      }, 3000)
+    } catch (err) {
+      setError('An unexpected error occurred')
     }
 
     setIsLoading(false)
@@ -130,23 +165,6 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="emailConfirm" className="text-gray-700 font-medium">Confirm Email</Label>
-                <div className="relative">
-                  <CheckCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    id="emailConfirm"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={emailConfirm}
-                    onChange={(e) => setEmailConfirm(e.target.value)}
-                    required
-                    disabled={isLoading}
-                    className="pl-10 h-12 bg-white border-2 border-gray-200 focus:border-green-400"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -162,8 +180,26 @@ export default function RegisterPage() {
                     className="pl-10 h-12 bg-white border-2 border-gray-200 focus:border-green-400"
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="passwordConfirm" className="text-gray-700 font-medium">Confirm Password</Label>
+                <div className="relative">
+                  <CheckCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    id="passwordConfirm"
+                    type="password"
+                    placeholder="••••••••"
+                    value={passwordConfirm}
+                    onChange={(e) => setPasswordConfirm(e.target.value)}
+                    required
+                    disabled={isLoading}
+                    minLength={6}
+                    className="pl-10 h-12 bg-white border-2 border-gray-200 focus:border-green-400"
+                  />
+                </div>
                 <p className="text-xs text-gray-500 flex items-center gap-1">
-                  <span className="text-primary">•</span> Minimum 6 characters
+                  <span className="text-green-600">•</span> Minimum 6 characters
                 </p>
               </div>
 
@@ -174,6 +210,16 @@ export default function RegisterPage() {
                   className="p-4 bg-red-50 border-2 border-red-200 text-red-700 rounded-xl text-sm"
                 >
                   {error}
+                </motion.div>
+              )}
+
+              {success && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 bg-green-50 border-2 border-green-200 text-green-700 rounded-xl text-sm"
+                >
+                  {success}
                 </motion.div>
               )}
 
@@ -194,7 +240,7 @@ export default function RegisterPage() {
 
               <div className="text-center text-sm text-gray-600">
                 Already have an account?{' '}
-                <Link href="/login" className="text-primary hover:text-primary-dark font-semibold hover:underline">
+                <Link href="/login" className="text-green-600 hover:text-green-700 font-semibold hover:underline">
                   Sign in here
                 </Link>
               </div>

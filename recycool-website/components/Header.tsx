@@ -25,8 +25,8 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white shadow-lg border-b-2 border-green-200' 
-          : 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm'
+          ? 'bg-white/80 backdrop-blur-md shadow-md border-b border-green-200/50' 
+          : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 py-4">

@@ -4,23 +4,23 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: 'swap',
 });
 
 const poppins = Poppins({
   variable: "--font-poppins",
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: "RecyCool - Be Cool, and Keep the Earth Cool",
-  description: "RecyCool is a student-led sustainability project at SMA Pradita Dirgantara. Through our Waste2Pay reverse vending machine, we empower 400+ community members to combat Indonesia's plastic crisis. Supporting SDG 12 and Indonesia's Zero Waste 2025 target through circular economy solutions.",
+  description:
+    "RecyCool is a student-led sustainability project at SMA Pradita Dirgantara, empowering 400+ community members (300 students + 100 staff) to combat Indonesia's plastic crisis through our innovative Waste2Pay vending machine and circular economy solutions. Supporting SDG 12 and Indonesia's Zero Waste 2025 target.",
 };
 
 export default function RootLayout({
@@ -39,6 +39,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <CookieConsent />
         </AuthProvider>
       </body>
     </html>

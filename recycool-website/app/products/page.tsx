@@ -228,9 +228,9 @@ export default function ProductsPage() {
               Collect points by depositing plastic bottles in our Waste2Pay RVM,
               then exchange them for cool merchandise!
             </p>
-            <div className="bg-white/90 border-2 border-white p-8 rounded-2xl inline-block shadow-lg">
-              <p className="text-sm mb-3 opacity-90">How to earn points:</p>
-              <p className="text-4xl font-bold">1 Bottle = 10 Points</p>
+            <div className="bg-white border-2 border-blue-200 p-8 rounded-2xl inline-block shadow-lg">
+              <p className="text-sm mb-3 text-gray-600 font-medium">How to earn points:</p>
+              <p className="text-4xl font-bold text-gray-900">1 Bottle = <span className="text-green-600">10 Points</span></p>
             </div>
           </motion.div>
         </div>

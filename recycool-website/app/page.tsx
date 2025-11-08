@@ -1,13 +1,43 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { ArrowRight, Recycle, Users, TrendingUp, Sparkles, Package, ShoppingBag, Key, Play } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
+
+// Counting animation hook
+function useCountUp(end: number, duration: number = 2000) {
+  const [count, setCount] = useState(0)
+  const countRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(countRef, { once: true })
+
+  useEffect(() => {
+    if (!isInView) return
+    
+    let startTime: number | null = null
+    let animationFrame: number
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      setCount(Math.floor(progress * end))
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [end, duration, isInView])
+
+  return { count, ref: countRef }
+}
 
 export default function HomePage() {
   const [rvmData, setRvmData] = useState({
@@ -18,6 +48,10 @@ export default function HomePage() {
   })
 
   const [products, setProducts] = useState<any[]>([])
+  
+  const bottlesCount = useCountUp(rvmData.totalBottles)
+  const hoursCount = useCountUp(rvmData.onlineHours)
+  const usersCount = useCountUp(rvmData.totalUsers)
 
   useEffect(() => {
     fetchRVMData()
@@ -388,9 +422,15 @@ export default function HomePage() {
                 Waste2Pay Statistics
               </h2>
               <p className="text-xl text-gray-600 mb-6">Real-time data from our vending machine</p>
-              <div className="inline-flex items-center gap-2 bg-white border-2 border-gray-200 px-6 py-3 rounded-full shadow-md">
-                <div className={`w-3 h-3 rounded-full ${rvmData.isOnline ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
-                <span className="font-semibold">{rvmData.isOnline ? 'System Online' : 'System Offline'}</span>
+              <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full shadow-md ${
+                rvmData.isOnline 
+                  ? 'bg-green-100 border-2 border-green-400' 
+                  : 'bg-red-100 border-2 border-red-400'
+              }`}>
+                <div className={`w-3 h-3 rounded-full ${rvmData.isOnline ? 'bg-green-500 animate-pulse' : 'bg-red-500 animate-pulse'}`} />
+                <span className={`font-semibold ${rvmData.isOnline ? 'text-green-700' : 'text-red-700'}`}>
+                  {rvmData.isOnline ? 'System Online' : 'System Offline'}
+                </span>
               </div>
             </div>
 
@@ -404,8 +444,8 @@ export default function HomePage() {
                 <Card className="text-center bg-white border-2 border-green-300 hover:border-green-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">🍾</div>
-                    <CardTitle className="text-5xl font-bold text-green-600">
-                      {rvmData.totalBottles.toLocaleString()}
+                    <CardTitle ref={bottlesCount.ref} className="text-5xl font-bold text-green-600">
+                      {bottlesCount.count.toLocaleString()}
                     </CardTitle>
                     <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
                       Bottles Collected
@@ -423,8 +463,8 @@ export default function HomePage() {
                 <Card className="text-center bg-white border-2 border-blue-300 hover:border-blue-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">⏰</div>
-                    <CardTitle className="text-5xl font-bold text-blue-600">
-                      {rvmData.onlineHours.toFixed(0)}
+                    <CardTitle ref={hoursCount.ref} className="text-5xl font-bold text-blue-600">
+                      {hoursCount.count}
                     </CardTitle>
                     <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
                       Hours Online
@@ -442,8 +482,8 @@ export default function HomePage() {
                 <Card className="text-center bg-white border-2 border-teal-300 hover:border-teal-500 hover:shadow-2xl transition-all">
                   <CardHeader>
                     <div className="text-6xl mb-2">👥</div>
-                    <CardTitle className="text-5xl font-bold text-teal-600">
-                      {rvmData.totalUsers.toLocaleString()}
+                    <CardTitle ref={usersCount.ref} className="text-5xl font-bold text-teal-600">
+                      {usersCount.count.toLocaleString()}
                     </CardTitle>
                     <CardDescription className="text-lg font-semibold text-gray-700 mt-2">
                       Active Users
@@ -538,7 +578,7 @@ export default function HomePage() {
       </section>
 
       {/* Join Our Team CTA */}
-      <section className="py-24 gradient-primary text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 gradient-primary text-white relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
