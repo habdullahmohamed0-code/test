@@ -56,29 +56,27 @@ export default function HomePage() {
     <div className="overflow-hidden">
       {/* Hero Section - Main Screen */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Background - Optimized */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
+              opacity: [0.3, 0.5, 0.3],
             }}
             transition={{
-              duration: 20,
+              duration: 8,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
             className="absolute -top-20 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [0, -90, 0],
+              opacity: [0.5, 0.3, 0.5],
             }}
             transition={{
-              duration: 25,
+              duration: 10,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
             className="absolute -bottom-20 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
           />
@@ -175,26 +173,18 @@ export default function HomePage() {
                   </motion.div>
                 </div>
 
-                {/* Decorative Elements */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -top-6 -right-6 w-20 h-20 bg-primary/20 rounded-full blur-xl"
-                />
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full blur-xl"
-                />
+                {/* Decorative Elements - Static for performance */}
+                <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary/20 rounded-full blur-xl" />
+                <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full blur-xl" />
               </motion.div>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Simplified animation */}
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ opacity: [1, 0.5, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
@@ -227,7 +217,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="h-full glass border-2 border-red-200 hover:shadow-xl transition-all">
                   <CardHeader>
@@ -252,7 +241,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="h-full glass border-2 border-orange-200 hover:shadow-xl transition-all">
                   <CardHeader>
@@ -277,7 +265,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="h-full glass border-2 border-yellow-200 hover:shadow-xl transition-all">
                   <CardHeader>
@@ -325,7 +312,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                whileHover={{ scale: 1.03 }}
               >
                 <Card className="h-full glass border-2 border-primary/30 hover:border-primary hover:shadow-glow-green transition-all">
                   <CardHeader>
@@ -347,7 +333,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.03 }}
               >
                 <Card className="h-full glass border-2 border-secondary/30 hover:border-secondary hover:shadow-glow-blue transition-all">
                   <CardHeader>
@@ -369,7 +354,6 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.03 }}
               >
                 <Card className="h-full glass border-2 border-accent/30 hover:border-accent hover:shadow-soft transition-all">
                   <CardHeader>
@@ -412,11 +396,10 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="text-center glass border-2 border-primary/30 hover:shadow-glow-green transition-all">
                   <CardHeader>
@@ -432,11 +415,10 @@ export default function HomePage() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="text-center glass border-2 border-secondary/30 hover:shadow-glow-blue transition-all">
                   <CardHeader>
@@ -452,11 +434,10 @@ export default function HomePage() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                whileHover={{ y: -5 }}
               >
                 <Card className="text-center glass border-2 border-accent/30 hover:shadow-soft transition-all">
                   <CardHeader>
@@ -501,7 +482,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
+                  className="hover:scale-105 transition-transform duration-300"
                 >
                   <Card className="h-full glass hover:shadow-2xl transition-all overflow-hidden group">
                     <CardHeader className="p-0">
