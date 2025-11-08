@@ -42,7 +42,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Hero Section */}
       <section className="py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -138,13 +138,13 @@ export default function ProductsPage() {
                   <Card className="h-full glass hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-primary/30 overflow-hidden group">
                     <CardHeader className="p-0">
                       <div className="relative w-full h-64 bg-gradient-to-br from-primary/10 to-secondary/10 overflow-hidden">
-                        {/* Product Image Placeholder - Replace with actual images */}
+                        {/* Product Image */}
                         <Image
-                          src={`https://via.placeholder.com/400x300/${product.category === 'Accessories' ? '22c55e' : product.category === 'Bags' ? '0ea5e9' : '14b8a6'}/ffffff?text=${encodeURIComponent(product.name)}`}
+                          src="/recycool-logo.jpeg"
                           alt={product.name}
                           width={400}
                           height={300}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="w-full h-full object-contain p-8 bg-white group-hover:scale-110 transition-transform duration-300"
                         />
                         {product.stock > 0 ? (
                           <span className="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">

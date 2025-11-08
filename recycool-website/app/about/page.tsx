@@ -6,43 +6,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Users, Target, Recycle, Package, TrendingUp, Heart } from 'lucide-react'
 
 export default function AboutPage() {
+  // Mobile optimization for about page
   const teamMembers = [
     {
       name: 'Ahmad Rizki',
       role: 'Project Lead & Hardware Engineer',
       description: 'Leading Waste2Pay RVM development and coordinating the team',
-      image: 'https://via.placeholder.com/200x200/22c55e/ffffff?text=AR',
+      image: '/recycool-logo.jpeg',
     },
     {
       name: 'Siti Nurhaliza',
       role: 'Software Developer',
       description: 'Developing website and database management systems',
-      image: 'https://via.placeholder.com/200x200/0ea5e9/ffffff?text=SN',
+      image: '/recycool-logo.jpeg',
     },
     {
       name: 'Budi Santoso',
       role: '3D Printing Specialist',
       description: 'Managing merchandise production with 3D printing technology',
-      image: 'https://via.placeholder.com/200x200/14b8a6/ffffff?text=BS',
+      image: '/recycool-logo.jpeg',
     },
     {
       name: 'Dewi Lestari',
       role: 'Community Manager',
       description: 'Coordinating movement and community engagement initiatives',
-      image: 'https://via.placeholder.com/200x200/22c55e/ffffff?text=DL',
+      image: '/recycool-logo.jpeg',
     },
     {
       name: 'Farhan Hidayat',
       role: 'Design & Marketing Lead',
       description: 'Creating visual content and developing marketing strategies',
-      image: 'https://via.placeholder.com/200x200/0ea5e9/ffffff?text=FH',
+      image: '/recycool-logo.jpeg',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Hero Section */}
-      <section className="py-24 gradient-primary text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -76,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 mb-16">
@@ -140,7 +141,7 @@ export default function AboutPage() {
       </section>
 
       {/* Problem Background */}
-      <section className="py-24 bg-gradient-to-br from-red-50/50 to-orange-50/50">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-red-50 to-orange-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -244,7 +245,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-emerald-50/30 to-cyan-50/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -340,7 +341,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Team */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -432,7 +433,7 @@ export default function AboutPage() {
       </section>
 
       {/* Achievements */}
-      <section className="py-24 gradient-primary text-white relative overflow-hidden">
+      <section className="py-12 md:py-24 gradient-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>

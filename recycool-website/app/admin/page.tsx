@@ -215,7 +215,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-secondary/5 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12 md:py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

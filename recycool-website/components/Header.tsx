@@ -36,7 +36,7 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             <Link
               href="/"
               className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
@@ -83,10 +83,10 @@ export default function Header() {
             {user ? (
               <>
                 {/* Points */}
-                <div className="flex items-center gap-2 glass px-4 py-2 rounded-full shadow-soft">
-                  <Coins className="w-5 h-5 text-primary" />
-                  <span className="font-bold text-gray-800">{user.points}</span>
-                  <span className="text-xs text-gray-500">pts</span>
+                <div className="flex items-center gap-2 glass px-3 md:px-4 py-2 rounded-full shadow-soft">
+                  <Coins className="w-4 md:w-5 h-4 md:h-5 text-primary" />
+                  <span className="font-bold text-gray-800 text-sm md:text-base">{user.points}</span>
+                  <span className="text-xs text-gray-500 hidden sm:inline">pts</span>
                 </div>
 
                 {/* Avatar Dropdown */}

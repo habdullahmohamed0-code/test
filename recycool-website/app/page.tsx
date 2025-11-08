@@ -55,7 +55,7 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section - Main Screen */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-blue-50 to-teal-50">
         {/* Animated Background - Optimized */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -82,9 +82,9 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Left Content */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -102,16 +102,16 @@ export default function HomePage() {
                   </span>
                 </motion.div>
                 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-900 font-[family-name:var(--font-poppins)]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 text-gray-900 font-[family-name:var(--font-poppins)]">
                   Welcome to{' '}
                   <span className="text-gradient">RecyCool</span>
                 </h1>
                 
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
                   A student-led sustainability project at SMA Pradita Dirgantara, empowering <span className="font-bold text-primary">400+ community members</span> (300 students + 100 staff) to combat Indonesia's plastic crisis through our innovative Waste2Pay vending machine and circular economy solutions.
                 </p>
 
-                <div className="flex flex-wrap gap-4 mb-8">
+                <div className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
                   <Link href="/products">
                     <Button size="lg" className="gradient-primary text-white hover:opacity-90 shadow-glow-green group">
                       Explore Products
@@ -126,18 +126,18 @@ export default function HomePage() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-3 md:gap-4">
                   <div>
-                    <p className="text-3xl font-bold text-primary">400+</p>
-                    <p className="text-sm text-gray-600">Members</p>
+                    <p className="text-2xl md:text-3xl font-bold text-primary">400+</p>
+                    <p className="text-xs md:text-sm text-gray-600">Members</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-secondary">{rvmData.totalBottles}</p>
-                    <p className="text-sm text-gray-600">Bottles Collected</p>
+                    <p className="text-2xl md:text-3xl font-bold text-secondary">{rvmData.totalBottles}</p>
+                    <p className="text-xs md:text-sm text-gray-600">Bottles</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-accent">{rvmData.totalUsers}</p>
-                    <p className="text-sm text-gray-600">Active Users</p>
+                    <p className="text-2xl md:text-3xl font-bold text-accent">{rvmData.totalUsers}</p>
+                    <p className="text-xs md:text-sm text-gray-600">Users</p>
                   </div>
                 </div>
               </motion.div>
@@ -150,13 +150,13 @@ export default function HomePage() {
                 className="relative"
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  {/* Main Image Placeholder - Replace with team photo */}
+                  {/* RecyCool Team Photo */}
                   <Image
-                    src="https://via.placeholder.com/600x700/22c55e/ffffff?text=RecyCool+Team"
+                    src="/recycool-logo.jpeg"
                     alt="RecyCool Team"
                     width={600}
                     height={700}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto object-contain bg-white p-8 rounded-2xl"
                   />
                   
                   {/* Floating Card */}
@@ -194,7 +194,7 @@ export default function HomePage() {
       </section>
 
       {/* Problem Background Section */}
-      <section className="py-24 bg-gradient-to-br from-red-50/50 via-orange-50/50 to-yellow-50/50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -289,7 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-50/30 to-cyan-50/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -375,7 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* Waste2Pay RVM Data Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -457,7 +457,7 @@ export default function HomePage() {
       </section>
 
       {/* Products Preview Section */}
-      <section className="py-24 bg-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-green-50/50 to-blue-50/50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -487,13 +487,13 @@ export default function HomePage() {
                   <Card className="h-full glass hover:shadow-2xl transition-all overflow-hidden group">
                     <CardHeader className="p-0">
                       <div className="relative w-full h-56 bg-gradient-to-br from-primary/20 to-secondary/20 overflow-hidden">
-                        {/* Product Image Placeholder */}
+                        {/* Product Image */}
                         <Image
-                          src={`https://via.placeholder.com/400x300/${product.category === 'Accessories' ? '22c55e' : product.category === 'Bags' ? '0ea5e9' : '14b8a6'}/ffffff?text=${encodeURIComponent(product.name)}`}
+                          src="/recycool-logo.jpeg"
                           alt={product.name}
                           width={400}
                           height={300}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="w-full h-full object-contain p-6 bg-white group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-6">
